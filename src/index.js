@@ -5,17 +5,17 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 
-const app = express();
+const PORT = process.env.PORT || 5000
 
-const ads = [{title:"Hello, world!"}]
+const app = express();
 
 app.use(helmet());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('combined'));
 
-app.listen(3001, () => {
-    console.log("listening on port 3001");
+app.listen(PORT, () => {
+    console.log("listening on port ${PORT}");
 });
 
 app.post("/split-payments/compute", (req, res) => {
